@@ -20,7 +20,7 @@ catch (Exception $e){
     <title>Test PDO</title> 
 </head>
 <body>
-    Disc N°<? = $disc->disc_id ?>
+    Disc N°<? = $disc-> disc_id ?>
     Disc name <?= $disc->disc_title ?>
     Disc year <?= $disc->disc_year ?>
 </body>

@@ -34,7 +34,7 @@ $artists= $result-> fetchAll();
 
 <H1 class="mb-3">Ajouter un vinyle </H1>
 
-<form action="add_script.php" method="post">
+<form action="add_script.php" method="post" enctype="multipart/form-data">
         <div class="row row-cols-auto">
             <div clas="col">
             <label for="title" class="form-label" >Title</label>

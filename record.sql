@@ -54,5 +54,3 @@ INSERT INTO disc (disc_id, disc_title, disc_year, disc_picture, disc_label, disc
 	(14, 'Beggars Banquet', 1968, 'Beggars Banquet.jpeg', 'Rolling Stones Records', 'Blues Rock, Classic Rock', 33.00, 1),
 	(15, 'Laboratory of sound', 1995, 'Laboratory of sound.jpeg', 'Rebel Rec.', 'Rock', 33.00, 9);
 ;
-
-

@@ -16,7 +16,6 @@ $artists= $result-> fetchAll();
 
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,6 +46,7 @@ $artists= $result-> fetchAll();
                     .$artist["artist_name"].
                     '</option>';
                     }?>
+                </select>
             <label for="year" class="form-label">Year</label>
                 <input class="form-control" type="text" name="year" placeholder="Enter year">
             </div>
@@ -56,7 +56,7 @@ $artists= $result-> fetchAll();
             <label for="label" class="form-label">Label</label>
                 <input class="form-control" type="text" name="label" placeholder="Enter label">
             <label for="price" class="form-label">Price</label>
-                <input class="form-control" type="text" name="price">
+                <input class="form-control" type="text" name="price" placeholder="Enter price">
             </div>
         </div>
         <div class="col ">

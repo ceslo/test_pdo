@@ -16,6 +16,12 @@ $details-> execute();
 $detailById = $details-> fetch();
 return $detailById;
 };
+
+$result= $db-> prepare("SELECT * from artist");
+$result-> execute();
+$artists= $result-> fetchAll();
+// var_dump($artists);
+
 ?>
 
 <!DOCTYPE html>
@@ -33,37 +39,47 @@ return $detailById;
 </head>
 <body>
 <h1> Modifier un vinyle </h1>
-<?php $detailById = getDetailsById($_GET["id"],$db);
-echo '<form action="update_script.php?id='.$_GET["id"].'" method="POST">
+<?php 
+$detailById = getDetailsById($_GET["id"],$db)?>
+
+<form action="update_script.php?id=<?=$_GET["id"]?>" method="POST" enctype="multipart/form-data">
+<input type="hidden" name="id" value="<?=$_GET["id"]?>"/>
    <div class="row row-cols-auto">
-          <div clas="col">
+        <div clas="col">
             <label for="title" class="form-label">Title</label>
-                <input class="form-control border" type="text" name="title" placeholder="'.$detailById["disc_title"].'"/>
+                <input class="form-control border" type="text" name="title" value="<?=$detailById["disc_title"]?>" placeholder="<?=$detailById["disc_title"]?>"/>
             <label for="artist" class="form-label">Artist</label>
-                <input class="form-control" type="text" name="artist" placeholder="'.$detailById["artist_name"].'"/>
+                <select class="form-select" name="artist">
+                 <?php foreach($artists as $artist)
+                {
+                     echo'<option value='.$artist["artist_id"].'>'
+                     .$artist["artist_name"].
+                    '</option>';
+                 }?>
+                </select>
             <label for="year" class="form-label">Year</label>
-                <input class="form-control" type="text" name="year" placeholder="'.$detailById["disc_year"].'"/>
-          </div>
-          <div class="col">
+                <input class="form-control" type="text" name="year" value="<?=$detailById["disc_year"]?>" placeholder="<?=$detailById["disc_year"]?>"/>
+        </div>
+        <div class="col">
             <label for="genre" class="form-label">Genre</label>
-                <input class="form-control" type="text" name="genre" placeholder="'.$detailById["disc_genre"].'"/>
+                <input class="form-control" type="text" name="genre" value="<?=$detailById["disc_genre"]?>" placeholder="<?=$detailById["disc_genre"]?>"/>
             <label for="label" class="form-label">Label</label>
-                <input class="form-control" type="text" name="label" placeholder="'.$detailById["disc_label"].'"/>
+                <input class="form-control" type="text" name="label" value="<?=$detailById["disc_label"]?>" placeholder="<?=$detailById["disc_label"]?>"/>
             <label for="price" class="form-label">Price</label>
-                <input class="form-control" type="text" name="price" placeholder="'.$detailById["disc_price"].'"/>
-          </div>
-      </div>
-      <img  class="img-thumbnail" style="max-width: 300px" src="pictures/'.$detailById["disc_picture"].'" alt="">
-      <div class="col">
+                <input class="form-control" type="text" name="price" value="<?=$detailById["disc_price"]?>" placeholder="<?=$detailById["disc_price"]?>"/>
+        </div>
+    </div>
+            <label for="picture" class="form-label">Image</label>
+                <input type="file" class="file-input" name="picture"/>
+        <div class="col">
           <button type= "submit" class="btn btn-danger">Modifier</button>
           <a class="btn btn-primary" href="index.php"> Retour</a>
-      </div>;
-  </form>'
-          ?>
+        </div>;
+</form>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-      crossorigin="anonymous"
-    ></script>
+      crossorigin="anonymous">
+    </script>
 </body>
 </html>

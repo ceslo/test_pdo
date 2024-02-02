@@ -12,3 +12,5 @@ $query = "DELETE FROM disc WHERE disc_id=:id";
 $delete_vinyle = $db->prepare($query);
 $delete_vinyle-> bindParam(':id',$id);
 $delete_vinyle->execute();
+
+header("location: index.php");

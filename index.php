@@ -31,7 +31,7 @@ $result= $disc-> fetchAll();
 <div id="zone1" class="row row-cols-3">        
       <!-- // var_dump($album)  -->
   <?php foreach ($result as $album) { ?>
-  <div class ="card mb-3">-
+  <div class ="card mb-3">
     <div class="row"> 
       <div class="col">
           <img style="max-width: 250px;" src="pictures/<?= $album["disc_picture"] ?>"> 
